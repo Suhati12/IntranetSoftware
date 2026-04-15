@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inbox - Workspace Mail</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0052cc;
+            --dark: #0f172a;
+            --bg: #f8fafc;
+            --border: #e2e8f0;
+            --text: #1e293b;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: var(--bg); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; color: var(--text); }
+
+        .navbar {
+            background-color: var(--dark); padding: 12px 24px;
+            display: flex; justify-content: space-between; align-items: center;
+            color: white; border-bottom: 3px solid var(--primary);
+            position: sticky; top: 0; z-index: 100;
+        }
+        .brand { font-size: 1.1em; font-weight: 600; display: flex; align-items: center; gap: 10px; }
+        .user-area { display: flex; align-items: center; gap: 20px; font-size: 0.9em; }
+        .logout-link { color: #cbd5e1; text-decoration: none; transition: color 0.2s; }
+        .logout-link:hover { color: white; }
+
+        .container-custom { max-width: 1000px; margin: 40px auto; padding: 0 20px; }
+        .page-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
+        .page-header h2 { font-size: 1.4em; font-weight: 600; }
+
+        .btn-compose {
+            background: var(--primary); color: white; border: none;
+            padding: 9px 18px; border-radius: 6px; font-weight: 500;
+            text-decoration: none; display: inline-flex; align-items: center;
+            gap: 8px; transition: background 0.2s, transform 0.2s; font-size: 0.9em;
+        }
+        .btn-compose:hover { background: #0043a6; color: white; transform: translateY(-1px); }
+
+        .data-card {
+            background: white; border: 1px solid var(--border);
+            border-radius: 8px; overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        table { width: 100%; border-collapse: collapse; }
+        thead th {
+            background: #f1f5f9; padding: 12px 20px;
+            font-size: 0.8em; font-weight: 600; color: #64748b;
+            text-transform: uppercase; letter-spacing: 0.5px;
+            border-bottom: 1px solid var(--border); text-align: left;
+        }
+        tbody td { padding: 16px 20px; border-bottom: 1px solid var(--border); font-size: 0.9em; }
+        tbody tr:last-child td { border-bottom: none; }
+        tbody tr { transition: background 0.15s; cursor: pointer; }
+        tbody tr:hover { background: #f8fafc; }
+        .sender-col { font-weight: 600; width: 20%; }
+        .subject-col { width: 60%; }
+        .subject-col a { text-decoration: none; color: var(--text); font-weight: 500; }
+        .subject-col a:hover { color: var(--primary); }
+        .date-col { width: 20%; color: #94a3b8; font-size: 0.85em; text-align: right; }
+
+        .empty-state { text-align: center; padding: 60px 20px; color: #94a3b8; }
+        .empty-state i { font-size: 3em; margin-bottom: 15px; display: block; opacity: 0.4; }
+
+        .badge-unread {
+            background: var(--primary); color: white;
+            font-size: 0.7em; padding: 2px 7px; border-radius: 10px;
+            margin-left: 8px; font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+<header class="navbar">
+    <div class="brand">
+        <i class="fas fa-network-wired"></i> Workspace Mail
+    </div>
+    <div class="user-area">
+        <span><i class="fas fa-user-circle me-1"></i> John Doe</span>
+        <a href="registration.html" class="logout-link"><i class="fas fa-sign-out-alt me-1"></i> Disconnect</a>
+    </div>
+</header>
+
+<div class="container-custom">
+    <div class="page-header">
+        <h2>Inbox <span class="badge-unread">3</span></h2>
+        <a href="inex.html" class="btn-compose"><i class="fas fa-pen"></i> New Message</a>
+    </div>
+
+    <div class="data-card">
+        <table>
+            <thead>
+                <tr>
+                    <th>Sender</th>
+                    <th>Message Payload</th>
+                    <th style="text-align:right;">Timestamp</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="sender-col">admin@company.com</td>
+                    <td class="subject-col"><a href="inex.html">Welcome to Intranet Workspace Mail</a></td>
+                    <td class="date-col">2026-04-05 09:00</td>
+                </tr>
+                <tr>
+                    <td class="sender-col">hr@company.com</td>
+                    <td class="subject-col"><a href="inex.html">Q2 Policy Updates - Action Required</a></td>
+                    <td class="date-col">2026-04-04 14:32</td>
+                </tr>
+                <tr>
+                    <td class="sender-col">it@company.com</td>
+                    <td class="subject-col"><a href="inex.html">Scheduled Maintenance - April 10th</a></td>
+                    <td class="date-col">2026-04-03 11:15</td>
+                </tr>
+                <tr>
+                    <td class="sender-col">manager@company.com</td>
+                    <td class="subject-col"><a href="inex.html">Re: Project Alpha Status Report</a></td>
+                    <td class="date-col">2026-04-02 16:45</td>
+                </tr>
+                <tr>
+                    <td class="sender-col">noreply@company.com</td>
+                    <td class="subject-col"><a href="inex.html">Your account has been provisioned</a></td>
+                    <td class="date-col">2026-04-01 08:00</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>
